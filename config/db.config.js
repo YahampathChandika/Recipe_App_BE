@@ -6,6 +6,7 @@ const uri = process.env.MONGODB_URI;
 
 let dbClient;
 let usersCollection;
+let favoritesCollection;
 
 async function connectToDatabase() {
   try {
@@ -20,6 +21,7 @@ async function connectToDatabase() {
     await dbClient.connect();
     const mealdb = dbClient.db("MealInventory");
     usersCollection = mealdb.collection("users");
+    favoritesCollection = mealdb.collection("favorites");
 
     console.log("Successfully connected to MongoDB!");
   } catch (error) {
@@ -31,4 +33,12 @@ function getUsersCollection() {
   return usersCollection;
 }
 
-module.exports = { connectToDatabase, getUsersCollection };
+function getFavoritesCollection() {
+  return favoritesCollection;
+}
+
+module.exports = {
+  connectToDatabase,
+  getUsersCollection,
+  getFavoritesCollection,
+};
