@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const { getUsersCollection } = require('../config/db.config');
+const bcrypt = require("bcrypt");
+const { getUsersCollection } = require("../config/db.config");
 
 //Find user by email
 async function findUserByEmail(email) {
@@ -8,10 +8,23 @@ async function findUserByEmail(email) {
 }
 
 //Create new user
-async function createUser({ username, password, email }) {
+async function createUser({
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+  password,
+}) {
+  console.log({ firstName, lastName, email, phoneNumber, password });
   const usersCollection = getUsersCollection();
   const hashedPassword = await bcrypt.hash(password, 10);
-  const newUser = { username, email, password: hashedPassword };
+  const newUser = {
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    password: hashedPassword,
+  };
   await usersCollection.insertOne(newUser);
 }
 
