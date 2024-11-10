@@ -13,16 +13,23 @@ async function findUserByEmail(email) {
 }
 
 //Create new user
-async function createUser({ username, password, email }) {
-  try {
-    const usersCollection = getUsersCollection();
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const newUser = { username, email, password: hashedPassword };
-    await usersCollection.insertOne(newUser);
-  } catch (error) {
-    console.error("Error in user service:", error);
-    throw new Error("Failed to create user");
-  }
+async function createUser({
+  firstName,
+  lastName,
+  email,
+  phoneNumber,
+  password,
+}) {
+  const usersCollection = getUsersCollection();
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const newUser = {
+    firstName,
+    lastName,
+    email,
+    phoneNumber,
+    password: hashedPassword,
+  };
+  await usersCollection.insertOne(newUser);
 }
 
 //Verify password
@@ -34,5 +41,4 @@ async function verifyPassword(inputPassword, storedPassword) {
     throw new Error("Failed to verify user password");
   }
 }
-
 module.exports = { findUserByEmail, createUser, verifyPassword };
