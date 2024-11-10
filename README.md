@@ -29,16 +29,20 @@ This is the backend of the Recipe Web App built with Node.js and Express. It ser
 1. Clone the repository:
 - git clone https://github.com/YahampathChandika/Recipe_App_BE.git
 - cd recipe_app_be
+
    
 2. Install dependencies:
 - npm install
 
+
 3. Environment Variables
 
-Create a .env file in the root of the backend directory with the following:
-- JWT_SECRET=<your-jwt-secret>
-- MONGODB_URI=<your-mongobd-uri>
-- PORT=<your-backend-port>
+ Create a .env file in the root of the backend directory with the following:
+ 
+- JWT_SECRET - your jwt secret
+- MONGODB_URI - your mongobd uri
+- PORT - your backend port
+
 
 4. Run the application locally
 - npm start
