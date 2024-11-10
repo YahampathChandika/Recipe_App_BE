@@ -27,8 +27,8 @@ This is the backend of the Recipe Web App built with Node.js and Express. It ser
 ### Installation
 
 1. Clone the repository:
-   git clone https://github.com/YahampathChandika/Recipe_App_BE.git
-   cd recipe_app_be
+- git clone https://github.com/YahampathChandika/Recipe_App_BE.git
+- cd recipe_app_be
    
 2. Install dependencies:
 - npm install
