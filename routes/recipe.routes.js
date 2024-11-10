@@ -1,15 +1,10 @@
-const express = require("express");
-const recipeController = require("../controllers/recipe.controller");
+const express = require('express');
+const { fetchRecipesByCategory, fetchRecipesById } = require('../controllers/recipe.controller');
 const verifyToken = require('../middleware/auth.middleware');
 
-function recipeRoutes() {
-    const router = express.Router();
+const router = express.Router();
 
-    router.use(express.json());
+router.get('/category/:category', verifyToken, fetchRecipesByCategory);
+router.get('/:id', verifyToken, fetchRecipesById);
 
-    router.get('/category/:category', verifyToken, recipeController.getRecipesByCategory);
-
-    return router;
-}
-
-module.exports = recipeRoutes();
+module.exports = router;

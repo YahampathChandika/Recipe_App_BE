@@ -1,15 +1,27 @@
-const recipeService = require("../services/recipe.service");
+const recipeService = require('../services/recipe.service');
 
-// Get recipes by category
-const getRecipesByCategory = async (req, res) => {
+async function fetchRecipesByCategory(req, res) {
   const { category } = req.params;
+
   try {
-    const recipes = await recipeService.fetchRecipesByCategory(category);
+    const recipes = await recipeService.getRecipesByCategory(category);
     res.status(200).json(recipes);
   } catch (error) {
-    console.error("Error fetching recipes:", error);
-    res.status(500).json({ message: error.message });
+    console.error('Error fetching recipes:', error);
+    res.status(500).json({ message: 'Failed to fetch recipes' });
   }
-};
+}
 
-module.exports = { getRecipesByCategory };
+async function fetchRecipesById(req, res) {
+  const { id } = req.params;
+
+  try {
+    const recipe = await recipeService.getRecipesById(id);
+    res.status(200).json(recipe);
+  } catch (error) {
+    console.error('Error fetching recipes', error);
+    res.status(500).json({message: 'Failed to fetch recipes'})
+  }
+}
+
+module.exports = { fetchRecipesByCategory, fetchRecipesById };
