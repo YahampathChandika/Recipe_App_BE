@@ -2,7 +2,7 @@
 
 This is the backend of the Recipe Web App built with Node.js and Express. It serves data to the frontend and handles user authentication and authorization.
 
-- Hosted on - https://recipe-app-enigma.vercel.app/](https://recipeappbe-production.up.railway.app/
+- Hosted on - https://recipeappbe-production.up.railway.app
 
 ## Tech Stack
 
